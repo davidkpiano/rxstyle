@@ -1,0 +1,11 @@
+{
+  "name": "rxstyle",
+  "version": "0.0.1",
+  "description": "Animation Framework for RxJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David <davidkpiano@gmail.com>",
+  "license": "MIT"
+}
