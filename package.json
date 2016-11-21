@@ -2,10 +2,32 @@
   "name": "rxstyle",
   "version": "0.0.1",
   "description": "Animation Framework for RxJS",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build",
+    "build": "npm run build:umd && npm run build:lib",
+    "build:lib": "babel src --out-dir lib",
+    "build:umd": "webpack -p src/index.js dist/rxstyle.min.js --config scripts/webpack.config.prod.js",
+    "build:watch": "webpack src/index.js dist/rxstyle.min.js --config scripts/webpack.config.prod.js -w",
+    "prepublish": "npm run build",
+    "test": "mocha --require babel-core/register --require ./spec/helpers/setup-jsdom.js ./spec/"
   },
   "author": "David <davidkpiano@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "~6.18.0",
+    "babel-core": "~6.18.2",
+    "babel-loader": "~6.2.8",
+    "babel-preset-es2015": "~6.18.0",
+    "babel-preset-stage-0": "~6.16.0",
+    "chai": "~3.5.0",
+    "html-webpack-plugin": "~2.24.1",
+    "jsdom": "~9.8.3",
+    "mocha": "~3.1.2",
+    "webpack": "~1.13.3"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "rxjs": "~5.0.0-rc.4"
+  }
 }
